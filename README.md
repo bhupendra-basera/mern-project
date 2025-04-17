@@ -1,0 +1,1 @@
+This is a full-stack project using MongoDB, Express, React, and Node.js.
