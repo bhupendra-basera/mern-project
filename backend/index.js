@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 });
 
 // TODO: Add MongoDB Connection here later
+mongoose.connect(process.env.MONGODB_URI).then(()=> console.log('MongoDB connected successfully'))
+.catch(err => console.log('MongoDB connection error: ', err));
 
 // Start the server
 app.listen(port, () => {
