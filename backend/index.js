@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose'); // We'll use this soon
 const authRoutes = require('./routes/auth'); // Import the auth routes
+const causesRoutes = require('./routes/causes'); // Import the causes router
 
 const app = express();
 const port = process.env.PORT || 5000; // Use port from environment variable or default to 5000
@@ -25,6 +26,8 @@ mongoose.connect(process.env.MONGODB_URI).then(()=> console.log('MongoDB connect
 // Use Authentication Routes
 // Request starting with /api/auth will be handled by authRoutes
 app.use('/api/auth', authRoutes);
+// Use Causes Routes
+app.use('/api/causes', causesRoutes); // Mount the causes routes
 
 // Start the server
 app.listen(port, () => {
