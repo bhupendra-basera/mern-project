@@ -11,6 +11,7 @@ const ProtectedRoute = ({ children }) => {
     }
 
     // If not authenticated and loading is complete, redirect to the login page
+    console.log('3',isAuthenticated)
     if (!isAuthenticated) {
         // Navigate component handles the redirection
         // 'replace' ensures the login page replaces the history entry,

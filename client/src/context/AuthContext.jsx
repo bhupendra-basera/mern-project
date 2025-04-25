@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from  'react';
+import React, { createContext, useState, useEffect, useContext  } from  'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../utils/api'; // Import your API utility
 
 // Create the Authentication Context
@@ -10,7 +11,8 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(null); // To store logged-in user data
     const [loading, setLoading] = useState(true); // To indicate if auth state is being loaded
-
+    const Navigate   = useNavigate();
+    
     // Check for token in localStorage on initial load
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -67,8 +69,9 @@ export const AuthProvider = ({ children }) => {
 
             localStorage.setItem('token', newToken);
             setToken(newToken);
+            console.log('1',isAuthenticated);
             setIsAuthenticated(true); // Set isAuthenticated true immediately
-
+            console.log('2',isAuthenticated);
             // Load user data after setting the token
             const userRes = await api.get('/auth/user');
             setUser(userRes.data);

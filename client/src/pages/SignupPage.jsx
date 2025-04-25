@@ -1,6 +1,7 @@
-import React,{useState} from 'react'; // Import useState hook
+import React,{useState,useContext, useEffect} from 'react'; // Import useState hook
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import api from '../utils/api'; // Import our configured Axios instance
+import { AuthContext } from '../context/AuthContext.jsx';
 
 
 const SignupPage = () => {
@@ -15,6 +16,15 @@ const SignupPage = () => {
     
     const navigate = useNavigate(); // Hook for navigation
 
+    const { isAuthenticated } = useContext(AuthContext); // Get isAuthenticated state
+
+    // Effect to redirect if user is already authenticated
+    useEffect(() => {
+        if (isAuthenticated) {
+            // If authenticated, redirect to the profile page or home
+            navigate('/profile', { replace: true }); // Redirect to profile or home
+        }
+    },[isAuthenticated, navigate]); // Dependency array;
     // Handle input changes
     const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value});
 

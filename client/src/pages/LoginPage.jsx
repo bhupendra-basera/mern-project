@@ -1,4 +1,4 @@
-import React,{useState , useContext} from 'react';
+import React,{useState , useContext, useEffect} from 'react';
 import { useNavigate ,Link} from 'react-router-dom';
 import api from '../utils/api'; // Import our configured Axios instance
 import { AuthContext } from '../context/AuthContext'; // Import AuthContext
@@ -17,6 +17,15 @@ const LoginPage = () => {
     // we'll get the login function from AuthContext here later
     const { login } = useContext(AuthContext); // Use useContext to access context value
     
+    const {isAuthenticated} = useContext(AuthContext); // Get isAuthenticated state
+
+    // Effect to redirect if user is already authenticated
+    useEffect(() => {
+        if (isAuthenticated) {
+            // If Authenticated, redirect to the profile page or home
+            navigate('/profile', { replace: true }); // Use replace: true fro cleaner history
+        }
+    }, [isAuthenticated, navigate]); // Dependency array: re-run if isAuthenticated or navigate changes
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async e => {
