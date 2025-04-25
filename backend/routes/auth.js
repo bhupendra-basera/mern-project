@@ -6,8 +6,6 @@ const User = require('../models/User'); // Import the User model
 const authMiddleware = require('../middleware/authMiddleware'); // Import the middleware
 
 
-//We'll need a JWT secret key. Add this to your .env file!
-// JWT_SECRET= your_super_secret_key_here (make it strong and unique)
 
 //@route POST /apt/auth/signup
 //@desc Register a new user
