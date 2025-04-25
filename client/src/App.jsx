@@ -8,7 +8,8 @@ import { Routes, Route } from 'react-router-dom'; // Import Routes and Route
 import HomePage from './pages/HomePage';
 import SignupPage  from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
-
+import ProfilePage from './pages/ProfilePage'; // Import ProfilePage
+import CausesPage from './pages/CausesPage'; // Import CausesPage
 // Import layout components (placeholders for now)
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -20,8 +21,7 @@ function App() {
 
   return (
     <>
-      {/* Use a React Fragment */}
-      <Navbar /> {/* Navbar will appear on all pages */}
+      <Navbar /> 
 
       {/* Define our application routes */}
       <Routes>
@@ -34,8 +34,9 @@ function App() {
         {/* Route for the Login page */}
         <Route path="/login" element={<LoginPage />} />
 
-        {/* TODO: Add routes for Donate, Profile, etc. later */}
-      </Routes>
+        <Route path="/causes" element={<CausesPage />}/>
+        <Route path="/profile" element={<ProfilePage />} />
+       </Routes>
       <Footer /> {/* Footer will appear on all routed pages */}
     </>
     );

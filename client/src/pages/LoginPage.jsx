@@ -1,5 +1,5 @@
 import React,{useState , useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import api from '../utils/api'; // Import our configured Axios instance
 import { AuthContext } from '../context/AuthContext'; // Import AuthContext
 
@@ -88,7 +88,7 @@ const LoginPage = () => {
                 <button type="submit">Login</button>
             </form>
             <p>
-                Don't have an account? <a href="/signup">Sign Up</a> {/*Simple link, use Link component later */}
+                Don't have an account? <Link to="/signup">Sign Up</Link> {/*Simple link, use Link component later */}
             </p>
         </div>
     );

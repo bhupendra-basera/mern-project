@@ -1,5 +1,5 @@
 import React,{useState} from 'react'; // Import useState hook
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import api from '../utils/api'; // Import our configured Axios instance
 
 
@@ -79,7 +79,7 @@ const SignupPage = () => {
                 <button type="submit">Sign Up</button>
             </form>
             <p>
-                Already have an account? <a href="/login">Login</a> { /* Simple link, use Link component later */}
+                Already have an account? <Link to="/login">Login</Link> { /* Simple link, use Link component later */}
             </p>
         </div>
     );
