@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'; // Import Routes and Route
-
+import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
 // Import placeholder components (you'll and actual content later)
 import HomePage from './pages/HomePage';
 import SignupPage  from './pages/SignupPage';
@@ -35,7 +35,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="/causes" element={<CausesPage />}/>
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={
+          <ProtectedRoute> {/* Wrap the element with ProtectedRoute */}
+            <ProfilePage />
+          </ProtectedRoute>
+          } />
        </Routes>
       <Footer /> {/* Footer will appear on all routed pages */}
     </>
