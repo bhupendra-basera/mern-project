@@ -10,6 +10,7 @@ import SignupPage  from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage'; // Import ProfilePage
 import CausesPage from './pages/CausesPage'; // Import CausesPage
+import CauseDetailsPage from './pages/CauseDetailsPage'; // Import CauseDetailsPage
 // Import layout components (placeholders for now)
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="/causes" element={<CausesPage />}/>
+        <Route path="/causes/:id" element={<CauseDetailsPage />}/>
         <Route path="/profile" element={
           <ProtectedRoute> {/* Wrap the element with ProtectedRoute */}
             <ProfilePage />

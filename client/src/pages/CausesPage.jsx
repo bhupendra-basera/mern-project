@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from 'react'; // Import useEffect and useState
 import api from '../utils/api'; // Import our configured Axios instance
-
+import { Link } from 'react-router-dom';
 const CausesPage = () => {
     const [causes, setCauses] = useState([]); // State to store the list of causes
     const [loading, setLoading] = useState(true); // State to manage loading status
@@ -42,9 +42,11 @@ const CausesPage = () => {
                 {/* Map over the causes array and display each one */}
                 {causes.map(cause => (
                     <div key={cause._id} style={{ border: '1px solid #ccc', padding: '15px' , borderRadius: '8px' }}>
+                        <Link to={`/causes/${cause._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <h3>{cause.title}</h3>
-                        <p>{cause.description.substring(0,100)}...</p> {/* Display snippet */}
                         <img src={cause.image} alt={cause.title} style={{ width: '100%', height: '200px', objectFit: 'cover', marginBottom: '10px'}} />
+                        </Link>
+                        <p>{cause.description.substring(0,100)}...</p> {/* Display snippet */}
                         <p>Target: ₹{cause.targetAmount}</p>
                         <p>Raised: ₹{cause.raisedAmount}</p>
                         {/* TODO: Add a "Learn More" or "Donate" button/link */}
