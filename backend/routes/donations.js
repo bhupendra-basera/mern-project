@@ -68,6 +68,29 @@ router.post('/', authMiddleware, async(req,res) => {
     }
 });
 
-// TODO: Add GET routes to fetch user's donations or donations for a cause later
+// @route     GET /api/donations/my
+// @desc      Get all donations for the logged-in user
+// @Private   Private (requires authentication)
+router.get('/my',authMiddleware, async (req, res) => {
+    try{
+        // Get the user ID from the authenticated user(set by authmiddleware)
+        const userID = req.user.id;
+        console.log('User id ---',userID);
+        // Find all donations for this user
+        // .populate('cause', 'title image') fetches the linked case document
+        // and only includes the 'title' and 'image' fields from it.
+        const donations = await Donation.find({user: userID})
+                                        .populate('cause', 'title image')  // Populate cause details
+                                        .sort({ donatedAt: -1 }); // Sort by newest first
+    
+        // Send the list of donations
+        res.json(donations);
+    } catch (err) {
+        console.error('Error fetching user donations: thissssss', err.message);
+        res.status(500).send('Server Error fetching donations');
+    }
+});
+
+// TODO: Add GET route to fetch dontions for a specific cause later (maybe for admin/cause owner)
 
 module.exports = router;

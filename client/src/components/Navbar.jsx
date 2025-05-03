@@ -31,6 +31,7 @@ const Navbar = () => {
             <li><Link to="/causes">Causes</Link></li>
             <li><Link to="/profile">Welcome, {user ? user.username : 'User'}</Link></li> {/* Link to profile page */}
             {/* Use a button or span with click handler for logout */}
+            <li><Link to="/my-donations">My Donations</Link></li> {/* Add this link */}
             <li>
                 <span onClick={handleLogout} style={{ cursor: 'pointer'}}>
                     Logout

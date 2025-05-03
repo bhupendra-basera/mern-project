@@ -11,6 +11,7 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage'; // Import ProfilePage
 import CausesPage from './pages/CausesPage'; // Import CausesPage
 import CauseDetailsPage from './pages/CauseDetailsPage'; // Import CauseDetailsPage
+import MyDonationPage from './pages/MyDonationsPage'; // Import MyDonationPage;
 // Import layout components (placeholders for now)
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -42,6 +43,16 @@ function App() {
             <ProfilePage />
           </ProtectedRoute>
           } />
+          <Route 
+          path="/my-donations" /* New route path */
+          element={
+            <ProtectedRoute> {/* Protected route */}
+              <MyDonationPage/>
+            </ProtectedRoute>
+          }
+          />
+          {/* TODO: Add routes for Donate page (if separate), Contact page, etc.  */}
+          
        </Routes>
       <Footer /> {/* Footer will appear on all routed pages */}
     </>
